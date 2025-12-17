@@ -79,18 +79,6 @@ During practical exams such as PNPT:
 
 ---
 
-## Example output
-The script highlights findings using **color-coded text markers**:
-
-- `[!]` **Critical findings**: Plaintext passwords, credentials, shadow access
-- `[>]` **Scanning progress**: Files and locations being checked
-- `[*]` **Context information**: User, system, and environment data
-- `[i]` **Informational**: SSH keys, configuration notes
-
-All findings require **manual validation and interpretation**.
-
----
-
 ## Usage
 
 ```bash
@@ -102,7 +90,35 @@ chmod +x pnpt_password_hunter.sh
 ./pnpt_password_hunter.sh --help
 ./pnpt_password_hunter.sh --quick    # Fast scan (common locations)
 ./pnpt_password_hunter.sh --deep     # Comprehensive scan
+```
+---
 
+## Out of scope (by design)
+
+This script intentionally focuses on **credential discovery only**.
+
+The following privilege escalation vectors are **deliberately excluded** and are better covered by tools such as **LinPEAS** or **Linux Smart Enumeration (LSE)**:
+
+- Kernel exploits
+- SUID/SGID binaries
+- Linux capabilities
+- Cron jobs or timers
+- Container escapes
+- Writable system binaries
+
+These vectors belong to a **different enumeration phase** and require separate, focused analysis.
+
+---
+
+## Example output
+The script highlights findings using **color-coded text markers**:
+
+- `[!]` **Critical findings**: Plaintext passwords, credentials, shadow access
+- `[>]` **Scanning progress**: Files and locations being checked
+- `[*]` **Context information**: User, system, and environment data
+- `[i]` **Informational**: SSH keys, configuration notes
+
+All findings require **manual validation and interpretation**.
 
 ---
 
